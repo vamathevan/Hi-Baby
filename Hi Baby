@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>New Year Wish</title>
+<style>
+    body {
+        margin: 0;
+        background: #000;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        color: white;
+    }
+
+    #openBtn {
+        margin-top: 40vh;
+        font-size: 30px;
+        padding: 15px 30px;
+        background: pink;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    #message {
+        display: none;
+        font-size: 28px;
+        margin-top: 30vh;
+        animation: floatText 2s infinite alternate;
+    }
+
+    @keyframes floatText {
+        from { transform: translateY(0px); }
+        to { transform: translateY(-20px); }
+    }
+
+    .heart {
+        position: absolute;
+        color: red;
+        font-size: 20px;
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        0%,100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+
+    .butterfly {
+        position: absolute;
+        font-size: 20px;
+        animation: fly 6s linear infinite;
+    }
+
+    @keyframes fly {
+        from {
+            transform: translateX(-50px) translateY(0);
+        }
+        to {
+            transform: translateX(100vw) translateY(-100px);
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<button id="openBtn" onclick="startWish()">HI BABY</button>
+
+<div id="message">Happy New Year Baby Kuddy ❤️</div>
+
+<script>
+function startWish() {
+    document.getElementById("openBtn").style.display = "none";
+    document.getElementById("message").style.display = "block";
+
+    // hearts
+    setInterval(() => {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = Math.random() * window.innerHeight + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 2000);
+    }, 300);
+
+    // butterflies
+    setInterval(() => {
+        let butterfly = document.createElement("div");
+        butterfly.className = "butterfly";
+        butterfly.innerHTML = "🦋";
+        butterfly.style.top = Math.random() * window.innerHeight + "px";
+        document.body.appendChild(butterfly);
+
+        setTimeout(() => butterfly.remove(), 6000);
+    }, 800);
+}
+</script>
+
+</body>
+</html>
